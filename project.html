@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+</head>
+<body>
+    <div class="profile container projects container">
+        <div class="calculator section">
+            <h2>Days lived calculator</h2>
+            <p>Enter ur date of birth</p>
+
+            <input type="date" id="dob">
+            <button onclick="CalculateDays()">Calculate</button>
+
+            <div id="result" class="result-text"></div>
+        </div>
+
+        <div class="links">
+            <a href="index.html">Back to home</a>
+        </div>
+    </div>
+
+    <script>
+        function CalculateDays(){
+            const dob = document.getElementById("dob").value;
+
+            if(!dob){
+                document.getElementById("result").innerText = "Please select date";
+                return;
+            }
+
+            const birthDate = new Date(dob);
+            const today = new Date();
+
+            const diffTime = Math.abs(today - birthDate);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            document.getElementById("result").innerText =
+                `You have lived for approximately ${diffDays.toLocaleString()} days`;
+        }
+    </script>
+</body>
+</html>
